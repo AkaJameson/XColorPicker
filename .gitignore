@@ -8,3 +8,7 @@
 /XColorPicker/.vs
 /XColorPicker/bin/Debug/net6.0
 /XColorPicker/obj
+/ColorPickor/bin/Release/net8.0-windows
+/ColorPickor/Properties/PublishProfiles
+/XColorPicker/bin/Release
+/XColorPicker/Properties/PublishProfiles
