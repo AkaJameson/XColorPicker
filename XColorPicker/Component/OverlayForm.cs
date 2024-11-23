@@ -22,6 +22,8 @@ namespace XColorPicker.Component
             TopMost = true;
             ShowInTaskbar = false;
             DoubleBuffered = true;                   // 双缓冲，避免闪烁
+            GetScreenSnapshot();
+
 
         }
         protected override void OnLoad(EventArgs e)
@@ -46,7 +48,6 @@ namespace XColorPicker.Component
             Controls.Add(colorLabel);
             Controls.Add(magnifierBox);
             this.Cursor = Cursors.Cross;
-            GetScreenSnapshot();
         }
 
         private void RefreshMagnifier()
