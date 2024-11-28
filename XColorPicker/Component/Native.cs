@@ -2,11 +2,10 @@ using System;
 using System.Windows.Forms;
 using XColorPicker;
 using XColorPicker.Core;
-using XColorPicker.Core.Abstraction;
 
 namespace ColorPickor
 {
-    public partial class Native : NativeWindow, IApplicationExit
+    public partial class Native : NativeWindow
     {
         public Native()
         {
@@ -25,11 +24,6 @@ namespace ColorPickor
                 }
             }
             base.WndProc(ref m);
-        }
-        public void Exit(object sender, EventArgs e)
-        {
-            HotKeyManager.UnregisterAltEKey();
-            DestroyHandle();
         }
     }
 }

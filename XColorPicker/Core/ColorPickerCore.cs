@@ -8,8 +8,7 @@ namespace XColorPicker.Core
     {
         private OverlayForm overlayForm; // 用于屏幕变灰的覆盖窗体
         private bool isPicking;          // 标记是否正在取色
-        private Timer updateTimer;       // 用于更新鼠标颜色的定时器
-
+        private Timer updateTimer = new Timer();       // 用于更新鼠标颜色的定时器
         public ColorPickerCore()
         {
             
@@ -37,26 +36,33 @@ namespace XColorPicker.Core
                 // 左键点击，取色并复制到剪贴板
                 var color = GetColorAtCursor();
                 Clipboard.SetText($"#{color.R:X2}{color.G:X2}{color.B:X2}");
-                OnCancel(); // 完成后取消取色模式
+                OnCancel();
             }
             else if (e.Button == MouseButtons.Right)
             {
-                // 右键点击，取消操作
                 OnCancel();
             }
         }
-
         public void OnCancel()
         {
             if (!isPicking) return;
 
             isPicking = false;
-            updateTimer?.Stop();
-            updateTimer?.Dispose();
-            overlayForm?.Close();
-            overlayForm = null;
-        }
+            if (updateTimer != null)
+            {
+                updateTimer.Stop();
+                updateTimer.Dispose();
+                updateTimer = null;
+            }
 
+            if (overlayForm != null)
+            {
+                overlayForm.MouseClick -= OnMouseClick;
+                overlayForm.Close();
+                overlayForm.Dispose();
+                overlayForm = null;
+            }
+        }
         private void UpdateMouseColor()
         {
             if (!isPicking) return;

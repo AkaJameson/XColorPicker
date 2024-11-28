@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using XColorPicker.Core.Abstraction;
 
 namespace XColorPicker.Component
 {
@@ -23,8 +22,6 @@ namespace XColorPicker.Component
             ShowInTaskbar = false;
             DoubleBuffered = true;                   // 双缓冲，避免闪烁
             GetScreenSnapshot();
-
-
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -116,6 +113,17 @@ namespace XColorPicker.Component
             {
                 e.Graphics.DrawImage(screenSnapshot, Point.Empty);
             }
+            else
+            {
+                base.OnPaintBackground(e);
+            }
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            screenSnapshot?.Dispose();
+            magnifierBox.Image?.Dispose();
+            base.OnFormClosed(e);
         }
     }
 }

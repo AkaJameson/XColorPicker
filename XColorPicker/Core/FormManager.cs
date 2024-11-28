@@ -10,19 +10,17 @@ namespace XColorPicker
     {
         private static Lazy<FormManager> instance = new Lazy<FormManager>(() => new FormManager());
         public static FormManager Instance { get { return instance.Value; } }
-        private Native native = new Native();
-        private PickerForm pickerForm = new PickerForm();
+        private Native native;
         public IAltEPressProcessor altEPressProcessor;
         private FormManager()
         {
             altEPressProcessor = new ColorPickerCore();
-            Application.ApplicationExit += native.Exit;
-            Application.ApplicationExit += pickerForm.Exit;
         }
 
         public void Run()
         {
-            Application.Run(pickerForm);
+            native = new Native();
+            Application.Run(new PickerForm());
         }
         public void ExitApplication(object sender, System.EventArgs e)
         {
