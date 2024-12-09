@@ -1,0 +1,10 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs
+/XColorPicker.Application/bin/Debug
+/XColorPicker.Application/obj/Debug
+/XPickerForm/bin/Debug
+/XPickerForm/.vs
+/XPickerForm/obj/Debug
