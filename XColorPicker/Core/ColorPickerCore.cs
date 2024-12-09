@@ -54,6 +54,7 @@ namespace XColorPicker.Core
             updateTimer?.Stop();
             updateTimer?.Dispose();
             overlayForm?.Close();
+            overlayForm?.Dispose();
             overlayForm = null;
         }
 
@@ -78,6 +79,7 @@ namespace XColorPicker.Core
                 return bitmap.GetPixel(0, 0);
             }
         }
+        
 
     }
 }

@@ -87,7 +87,6 @@ namespace XColorPicker.Component
 
             magnifierBox.Image?.Dispose();
             magnifierBox.Image = magnifiedBitmap;
-
             capturedBitmap.Dispose();
         }
 
@@ -102,6 +101,7 @@ namespace XColorPicker.Component
         }
         private void GetScreenSnapshot()
         {
+            screenSnapshot?.Dispose();
             // 获取屏幕快照
             var screenBounds = Screen.PrimaryScreen.Bounds;
             screenSnapshot = new Bitmap(screenBounds.Width, screenBounds.Height);
@@ -116,6 +116,20 @@ namespace XColorPicker.Component
             {
                 e.Graphics.DrawImage(screenSnapshot, Point.Empty);
             }
+            else
+            {
+                base.OnPaintBackground(e);
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            screenSnapshot?.Dispose();
+            magnifierBox.Image?.Dispose();
+            colorLabel.Dispose();
+            magnifierBox.Dispose();
+            GC.Collect();
         }
     }
 }
