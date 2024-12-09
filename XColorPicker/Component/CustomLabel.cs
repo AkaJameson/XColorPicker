@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using XColorPicker.Core.Abstraction;
 
 namespace XColorPicker.Component
 {

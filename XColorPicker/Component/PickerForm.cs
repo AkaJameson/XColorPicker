@@ -3,11 +3,10 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using XColorPicker;
-using XColorPicker.Core.Abstraction;
 
 namespace ColorPickor
 {
-    public partial class PickerForm : Form, IApplicationExit
+    public partial class PickerForm : Form
     {
         private NotifyIcon notifyIcon;
         private ContextMenuStrip contextMenuStrip;
@@ -73,12 +72,6 @@ namespace ColorPickor
             {
                 return SystemIcons.Application;
             }
-        }
-        public void Exit(object sender, EventArgs e)
-        {
-            notifyIcon.Visible = false; // 隐藏托盘图标
-            notifyIcon.Dispose();
-            Close();
         }
     }
 }
